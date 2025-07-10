@@ -4410,6 +4410,66 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_BEACH",
+      "name": "HarmonyBeach_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/HarmonyBeach/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyBeach/map.bin"
+    },
+    {
+      "id": "LAYOUT_MELODY_FOREST",
+      "name": "MelodyForest_Layout",
+      "width": 40,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/MelodyForest/border.bin",
+      "blockdata_filepath": "data/layouts/MelodyForest/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_BLUFF",
+      "name": "HarmonyBluff_Layout",
+      "width": 30,
+      "height": 11,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/HarmonyBluff/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyBluff/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_VILLAGE",
+      "name": "HarmonyVillage_Layout",
+      "width": 40,
+      "height": 70,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/HarmonyVillage/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyVillage/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_CAVE_EXT",
+      "name": "HarmonyCaveExt_Layout",
+      "width": 30,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/HarmonyCaveExt/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyCaveExt/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_SANDBAR",
+      "name": "HarmonySandbar_Layout",
+      "width": 50,
+      "height": 12,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/HarmonySandbar/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonySandbar/map.bin"
     }
   ]
 }
