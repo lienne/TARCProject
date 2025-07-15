@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_HARMONY_BEACH",
-      "offset": 10,
+      "offset": 5,
       "direction": "down"
     },
     {

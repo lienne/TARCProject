@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_HARMONY_CAVE_EXT",
-      "offset": -10,
+      "offset": -5,
       "direction": "up"
     },
     {
