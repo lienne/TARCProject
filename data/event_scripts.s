@@ -1169,3 +1169,25 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/HarmonyVillage/scripts.inc"
 
 	.include "data/maps/HarmonyBluff/scripts.inc"
+
+	.include "data/maps/OaksCabana/scripts.inc"
+
+	.include "data/maps/HarmonyEmptyLayout_3/scripts.inc"
+
+	.include "data/maps/OaksCabana_2F/scripts.inc"
+
+	.include "data/maps/HarmonyVillageHouse4/scripts.inc"
+
+	.include "data/maps/HarmonyVillageHouse3/scripts.inc"
+
+	.include "data/maps/HarmonyEmptyLayout_2/scripts.inc"
+
+	.include "data/maps/HarmonyEmptyLayout/scripts.inc"
+
+	.include "data/maps/HarmonyVillageHouse1/scripts.inc"
+
+	.include "data/maps/HarmonyVillageHouse2/scripts.inc"
+
+	.include "data/maps/BeachCave/scripts.inc"
+
+	.include "data/maps/OaksLibrary/scripts.inc"

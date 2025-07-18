@@ -4435,7 +4435,7 @@
       "id": "LAYOUT_HARMONY_BLUFF",
       "name": "HarmonyBluff_Layout",
       "width": 30,
-      "height": 11,
+      "height": 17,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/HarmonyBluff/border.bin",
@@ -4455,7 +4455,7 @@
       "id": "LAYOUT_HARMONY_CAVE_EXT",
       "name": "HarmonyCaveExt_Layout",
       "width": 30,
-      "height": 20,
+      "height": 23,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/HarmonyCaveExt/border.bin",
@@ -4470,6 +4470,116 @@
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/HarmonySandbar/border.bin",
       "blockdata_filepath": "data/layouts/HarmonySandbar/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKS_CABANA",
+      "name": "OaksCabana_Layout",
+      "width": 18,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/OaksCabana/border.bin",
+      "blockdata_filepath": "data/layouts/OaksCabana/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_VILLAGE_HOUSE2",
+      "name": "HarmonyVillageHouse2_Layout",
+      "width": 8,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyVillageHouse2/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyVillageHouse2/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKS_CABANA_2F",
+      "name": "OaksCabana_2F_Layout",
+      "width": 18,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/OaksCabana_2F/border.bin",
+      "blockdata_filepath": "data/layouts/OaksCabana_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_VILLAGE_HOUSE3",
+      "name": "HarmonyVillageHouse3_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyVillageHouse3/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyVillageHouse3/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_EMPTY_LAYOUT_3",
+      "name": "HarmonyEmptyLayout_3_Layout",
+      "width": 20,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyEmptyLayout_3/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyEmptyLayout_3/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_EMPTY_LAYOUT_2",
+      "name": "HarmonyEmptyLayout_2_Layout",
+      "width": 20,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyEmptyLayout_2/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyEmptyLayout_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_EMPTY_LAYOUT",
+      "name": "HarmonyEmptyLayout_Layout",
+      "width": 20,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyEmptyLayout/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyEmptyLayout/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_VILLAGE_HOUSE4",
+      "name": "HarmonyVillageHouse4_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyVillageHouse4/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyVillageHouse4/map.bin"
+    },
+    {
+      "id": "LAYOUT_HARMONY_VILLAGE_HOUSE1",
+      "name": "HarmonyVillageHouse1_Layout",
+      "width": 10,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/HarmonyVillageHouse1/border.bin",
+      "blockdata_filepath": "data/layouts/HarmonyVillageHouse1/map.bin"
+    },
+    {
+      "id": "LAYOUT_BEACH_CAVE",
+      "name": "BeachCave_Layout",
+      "width": 75,
+      "height": 16,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BeachCave/border.bin",
+      "blockdata_filepath": "data/layouts/BeachCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKS_LIBRARY",
+      "name": "OaksLibrary_Layout",
+      "width": 18,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/OaksLibrary/border.bin",
+      "blockdata_filepath": "data/layouts/OaksLibrary/map.bin"
     }
   ]
 }

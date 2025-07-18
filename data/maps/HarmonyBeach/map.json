@@ -2,7 +2,7 @@
   "id": "MAP_HARMONY_BEACH",
   "name": "HarmonyBeach",
   "layout": "LAYOUT_HARMONY_BEACH",
-  "music": "MUS_DUMMY",
+  "music": "MUS_DEWFORD",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

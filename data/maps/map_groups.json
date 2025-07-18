@@ -33,7 +33,8 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124"
+    "gMapGroup_IndoorRoute124",
+    "gMapGroup_IndoorHarmony"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -626,5 +627,18 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
+  ],
+  "gMapGroup_IndoorHarmony": [
+    "OaksCabana",
+    "OaksCabana_2F",
+    "HarmonyEmptyLayout",
+    "HarmonyEmptyLayout_2",
+    "HarmonyEmptyLayout_3",
+    "HarmonyVillageHouse1",
+    "HarmonyVillageHouse2",
+    "HarmonyVillageHouse3",
+    "HarmonyVillageHouse4",
+    "BeachCave",
+    "OaksLibrary"
   ]
 }
