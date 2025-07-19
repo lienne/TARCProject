@@ -1191,3 +1191,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/BeachCave/scripts.inc"
 
 	.include "data/maps/OaksLibrary/scripts.inc"
+
+	.include "data/maps/BeachCave2F/scripts.inc"
+
+	.include "data/maps/OaksLibraryCellar/scripts.inc"

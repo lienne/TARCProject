@@ -4580,6 +4580,26 @@
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/OaksLibrary/border.bin",
       "blockdata_filepath": "data/layouts/OaksLibrary/map.bin"
+    },
+    {
+      "id": "LAYOUT_OAKS_LIBRARY_CELLAR",
+      "name": "OaksLibraryCellar_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/OaksLibraryCellar/border.bin",
+      "blockdata_filepath": "data/layouts/OaksLibraryCellar/map.bin"
+    },
+    {
+      "id": "LAYOUT_BEACH_CAVE2F",
+      "name": "BeachCave2F_Layout",
+      "width": 60,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BeachCave2F/border.bin",
+      "blockdata_filepath": "data/layouts/BeachCave2F/map.bin"
     }
   ]
 }

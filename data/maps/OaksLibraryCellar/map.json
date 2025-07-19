@@ -1,7 +1,7 @@
 {
-  "id": "MAP_BEACH_CAVE",
-  "name": "BeachCave",
-  "layout": "LAYOUT_BEACH_CAVE",
+  "id": "MAP_OAKS_LIBRARY_CELLAR",
+  "name": "OaksLibraryCellar",
+  "layout": "LAYOUT_OAKS_LIBRARY_CELLAR",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
@@ -16,25 +16,25 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 10,
-      "y": 11,
+      "x": 2,
+      "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_HARMONY_CAVE_EXT",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_OAKS_LIBRARY",
+      "dest_warp_id": "2"
     },
     {
-      "x": 41,
-      "y": 8,
+      "x": 3,
+      "y": 9,
       "elevation": 0,
-      "dest_map": "MAP_BEACH_CAVE2F",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_OAKS_LIBRARY",
+      "dest_warp_id": "2"
     },
     {
-      "x": 42,
-      "y": 8,
+      "x": 1,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_BEACH_CAVE2F",
-      "dest_warp_id": "1"
+      "dest_warp_id": "2"
     }
   ],
   "coord_events": [],
