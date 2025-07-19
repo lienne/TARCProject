@@ -31,7 +31,16 @@ enum MapPreviewScreenId
     MPS_SCUFIB_CHAMBER,
     MPS_RIXY_CHAMBER,
     MPS_VIAPOIS_CHAMBER,
+    MPS_HARMONY_1,
     MPS_COUNT
+};
+
+enum {
+    INTRO_HARMONY_1,
+    INTRO_VIRIDIAN_FOREST,
+    INTRO_MT_MOON,
+    INTRO_DIGLETTS_CAVE,
+    INTRO_SLIDE_COUNT
 };
 
 enum PreviewImageId
@@ -57,6 +66,7 @@ enum PreviewImageId
     IMG_ICEFALL_CAVE,
     IMG_LOST_CAVE,
     IMG_ALTERING_CAVE,
+    IMG_HARMONY_1,
     IMG_COUNT
 };
 
@@ -114,5 +124,8 @@ void MapPreview_LoadGfx(u8 mapsec);
 bool32 MapPreview_IsGfxLoadFinished(void);
 void MapPreview_Unload(s32 windowId);
 void MapPreview_StartForestTransition(u8 mapsec);
+// void StartIntroMapPreviews(void);
+void StartIntroSlideshow(void);
+void CB2_IntroMapPreviewSequence(void);
 
 #endif //GUARD_MAP_PREVIEW_SCREEN_H

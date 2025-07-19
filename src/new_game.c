@@ -48,6 +48,7 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "map_preview_screen.h" 
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -134,6 +135,9 @@ static void WarpToTruck(void)
     // SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
     SetWarpDestination(MAP_GROUP(MAP_HARMONY_VILLAGE), MAP_NUM(MAP_HARMONY_VILLAGE), WARP_ID_NONE, 12, 14);
     WarpIntoMap();
+
+    // Play intro map previews cutscene once per new game
+    // StartIntroSlideshow();
 }
 
 void Sav2_ClearSetDefault(void)

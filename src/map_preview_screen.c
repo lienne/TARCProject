@@ -16,11 +16,16 @@
 #include "constants/rgb.h"
 
 static EWRAM_DATA bool8 sAllocedBg0TilemapBuffer = FALSE;
+#define DISABLE_MAP_NAME_WINDOW 1
 
 static void Task_RunMapPreviewScreenForest(u8 taskId);
 static void Task_RunMapPreview_Script(u8 taskId);
 static void CB2_MapPreviewScript(void);
 static void VblankCB_MapPreviewScript(void);
+
+// Intro slideshow functions
+void CB2_IntroMapPreviewSequence(void);
+static void Task_IntroSlideshow(u8 taskId);
 
 static const u8 sViridianForestMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/viridian_forest/tiles.gbapal");
 static const u8 sViridianForestMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/viridian_forest/tiles.4bpp.lz");
@@ -85,7 +90,39 @@ static const u8 sIcefallCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_previe
 static const u8 sAlteringCaveMapPreviewPalette[] = INCBIN_U8("graphics/map_preview/altering_cave/tiles.gbapal");
 static const u8 sAlteringCaveMapPreviewTiles[] = INCBIN_U8("graphics/map_preview/altering_cave/tiles.4bpp.lz");
 static const u8 sAlteringCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/altering_cave/tilemap.bin.lz");
+static const u8 sHarmony1MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/harmony/tiles1.gbapal");
+static const u8 sHarmony1MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/harmony/tiles1.4bpp.lz");
+static const u8 sHarmony1MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/harmony/tilemap1.bin.lz");
 
+// Intro slideshow images
+static const struct MapPreviewScreen sIntroSlides[INTRO_SLIDE_COUNT] = {
+    [INTRO_HARMONY_1] = {
+        .mapsec = MAPSEC_ABANDONED_SHIP,
+        .type = MPS_TYPE_FADE_IN,
+        .flagId = MPS_FLAG_NULL,
+        .image = IMG_HARMONY_1
+    },
+    [INTRO_VIRIDIAN_FOREST] = {
+        .mapsec = MAPSEC_VIRIDIAN_FOREST,
+        .type = MPS_TYPE_FADE_IN,
+        .flagId = MPS_FLAG_NULL,
+        .image = IMG_VIRIDIAN_FOREST
+    },
+    [INTRO_MT_MOON] = {
+        .mapsec = MAPSEC_MT_MOON,
+        .type = MPS_TYPE_CAVE,
+        .flagId = MPS_FLAG_NULL,
+        .image = IMG_MT_MOON
+    },
+    [INTRO_DIGLETTS_CAVE] = {
+        .mapsec = MAPSEC_DIGLETTS_CAVE,
+        .type = MPS_TYPE_CAVE,
+        .flagId = MPS_FLAG_NULL,
+        .image = IMG_DIGLETTS_CAVE
+    },
+};
+
+// Vanilla map preview images
 // If you set flagId to MPS_FLAG_NULL, it will not set a flag when visiting the map for the first time
 // and the duration will default to MPS_DURATION_NO_FLAG.
 static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
@@ -256,7 +293,13 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] = {
         .type = MPS_TYPE_CAVE,
         .flagId = MPS_FLAG_NULL,
         .image = IMG_MONEAN_CHAMBER
-    }
+    },
+    // [MPS_HARMONY_1] = {
+    //     .mapsec = MAPSEC_ABANDONED_SHIP,
+    //     .type = MPS_TYPE_FADE_IN,
+    //     .flagId = MPS_FLAG_NULL,
+    //     .image = IMG_HARMONY_1
+    // },
 };
 
 static const struct ImageData sMapPreviewImageData[IMG_COUNT] = {
@@ -364,6 +407,11 @@ static const struct ImageData sMapPreviewImageData[IMG_COUNT] = {
         .tilesptr = sAlteringCaveMapPreviewTiles,
         .tilemapptr = sAlteringCaveMapPreviewTilemap,
         .palptr = sAlteringCaveMapPreviewPalette
+    },
+    [IMG_HARMONY_1] = {
+        .tilesptr = sHarmony1MapPreviewTiles,
+        .tilemapptr = sHarmony1MapPreviewTilemap,
+        .palptr = sHarmony1MapPreviewPalette
     }
 };
 
@@ -501,7 +549,12 @@ void MapPreview_StartForestTransition(u8 mapsec)
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 0));
     SetGpuRegBits(REG_OFFSET_WININ, WININ_WIN0_CLR | WININ_WIN1_CLR);
     SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WIN01_CLR);
-    gTasks[taskId].data[11] = MapPreview_CreateMapNameWindow(mapsec);
+    // gTasks[taskId].data[11] = MapPreview_CreateMapNameWindow(mapsec);
+    #if !DISABLE_MAP_NAME_WINDOW
+        gTasks[taskId].data[11] = MapPreview_CreateMapNameWindow(mapsec);
+    #else
+        gTasks[taskId].data[11] = -1;
+    #endif
     LockPlayerFieldControls();
 }
 
@@ -583,6 +636,10 @@ static void Task_RunMapPreviewScreenForest(u8 taskId)
             data[1] = 0;
             data[0]++;
         }
+        // if (JOY_NEW(A_BUTTON))  // wait for a new press of the A button
+        // {
+        //     data[0]++;  // move to the fade-out step
+        // }
         break;
     case 4:
         switch (data[1])
@@ -614,7 +671,9 @@ static void Task_RunMapPreviewScreenForest(u8 taskId)
     case 5:
         if (!IsDma3ManagerBusyWithBgCopy())
         {
-            MapPreview_Unload(data[11]);
+            // MapPreview_Unload(data[11]);
+            if (data[11] != -1)
+                MapPreview_Unload(data[11]);
             SetBgAttribute(0, BG_ATTR_PRIORITY, data[2]);
             SetGpuReg(REG_OFFSET_DISPCNT, data[3]);
             SetGpuReg(REG_OFFSET_BLDCNT, data[4]);
@@ -722,8 +781,12 @@ static void Task_RunMapPreview_Script(u8 taskId)
     case 0:
         if (!MapPreview_IsGfxLoadFinished() && !IsDma3ManagerBusyWithBgCopy())
         {
-            MPWindowId = MapPreview_CreateMapNameWindow(gMapHeader.regionMapSectionId);
-            CopyWindowToVram(MPWindowId, COPYWIN_FULL);
+            #if !DISABLE_MAP_NAME_WINDOW
+                MPWindowId = MapPreview_CreateMapNameWindow(gMapHeader.regionMapSectionId);
+                CopyWindowToVram(MPWindowId, COPYWIN_FULL);
+            #else
+                MPWindowId = -1;
+            #endif
             taskStep++;
         }
         break;
@@ -746,12 +809,179 @@ static void Task_RunMapPreview_Script(u8 taskId)
     case 3:
         if (!UpdatePaletteFade())
         {
+        #if !DISABLE_MAP_NAME_WINDOW
             MapPreview_Unload(MPWindowId);
+        #endif
             DestroyTask(taskId);
             SetMainCallback2(gMain.savedCallback);
         }
         break;
     }
+}
+
+// Intro cutscene functions
+
+void CB2_IntroMapPreviewSequence(void)
+{
+    static bool8 sPrintedOnce = FALSE;
+    if (!sPrintedOnce)
+    {
+        DebugPrintf("CB2_IntroMapPreviewSequence Reached");
+        sPrintedOnce = TRUE;
+    }
+
+    RunTasks();
+    DoScheduledBgTilemapCopiesToVram();
+    UpdatePaletteFade();
+    TransferPlttBuffer();
+}
+
+static void Task_IntroSlideshow(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    const struct ImageData *image = &sMapPreviewImageData[sIntroSlides[data[1]].image];
+
+    enum {
+        STEP_LOAD,
+        STEP_WAIT_LOAD,
+        STEP_FADE_IN,
+        STEP_WAIT_INPUT,
+        STEP_FADE_OUT,
+        STEP_NEXT_OR_DONE
+    };
+
+    switch (data[0])
+    {
+        case STEP_LOAD:
+            MapPreview_InitBgs();
+            ResetTempTileDataBuffers();
+
+            LoadPalette(image->palptr, BG_PLTT_ID(0), PLTT_SIZE);
+            DecompressAndCopyTileDataToVram(0, image->tilesptr, 0, 0, 0);
+
+            if (GetBgTilemapBuffer(0) == NULL)
+                SetBgTilemapBuffer(0, Alloc(BG_SCREEN_SIZE));
+            
+            CopyToBgTilemapBuffer(0, image->tilemapptr, 0, 0x000);
+
+            u16 *tilemap = (u16 *)GetBgTilemapBuffer(0);
+            for (int i = 0; i < 32 * 32; i++) {
+                tilemap[i] &= 0x0FFF; // clear upper 4 bits to force palette 0
+            }
+
+            CopyBgTilemapBufferToVram(0);
+
+            data[0] = STEP_WAIT_LOAD;
+            break;
+
+        case STEP_WAIT_LOAD:
+            if (!MapPreview_IsGfxLoadFinished() && !IsDma3ManagerBusyWithBgCopy())
+            {
+                FadeInFromWhite();
+                data[0] = STEP_FADE_IN;
+            }
+            break;
+
+        case STEP_FADE_IN:
+            if (!gPaletteFade.active)
+                data[0] = STEP_WAIT_INPUT;
+            break;
+
+        case STEP_WAIT_INPUT:
+            if (JOY_NEW(A_BUTTON))
+            {
+                // previously working code:
+                // BeginNormalPaletteFade(PALETTES_ALL, 5, 0x10, 16, RGB_WHITE);
+                // CopyBgTilemapBufferToVram(0);
+                // data[0] = STEP_FADE_OUT;
+
+                // Set up manual fade-out
+                ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
+                gPlttBufferUnfaded[0] = RGB_WHITE;
+                // copy just one 16-bit entry (palette idx 0) into palette RAM
+                DmaCopy16(3, &gPlttBufferUnfaded[0], (void*)(PLTT), sizeof(u16));
+                LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
+                
+                data[2] = 0; // 0 = direction alternator
+                data[3] = 16; // alpha of fading out (image)
+                data[4] = 0; // alpha of fading in (white)
+                
+                LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
+                SetGpuReg(REG_OFFSET_BLDCNT,
+                    BLDCNT_TGT1_BG0|BLDCNT_TGT2_BD|BLDCNT_EFFECT_BLEND
+                );
+                // SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT2_BD | BLDCNT_EFFECT_BLEND);
+                data[0] = STEP_FADE_OUT;
+            }
+            break;
+
+        case STEP_FADE_OUT:
+            // if (!gPaletteFade.active)
+            // {
+            //     SetVBlankCallback(NULL);
+            //     FadeScreen(FADE_FROM_WHITE, 0);
+            //     FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
+            //     CopyBgTilemapBufferToVram(0);
+            //     data[0] = STEP_NEXT_OR_DONE;
+            // }
+            // break;
+
+            switch (data[2])
+            {
+                case 0:  // fade in white
+                    if (data[4] < 16)
+                        data[4]++;
+                    break;
+                case 1:  // fade out image
+                    if (data[3] > 0)
+                        data[3]--;
+                    break;
+            }
+
+            SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(data[3], data[4]));
+            data[2] = (data[2] + 1) % 3;  // alternate each frame
+
+            if (data[3] == 0 && data[4] == 16)
+            {
+                FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
+                CopyBgTilemapBufferToVram(0);
+                SetGpuReg(REG_OFFSET_BLDCNT, 0);  // clear blending
+                data[0] = STEP_NEXT_OR_DONE;
+            }
+            break;
+
+        case STEP_NEXT_OR_DONE:
+            data[1]++;
+            if (data[1] >= INTRO_SLIDE_COUNT)
+            {
+                FlagSet(FLAG_INTRO_MAP_PREVIEW_DONE);
+                SetWarpDestination(MAP_GROUP(MAP_HARMONY_VILLAGE), MAP_NUM(MAP_HARMONY_VILLAGE), WARP_ID_NONE, 12, 14);
+                SetMainCallback2(CB2_NewGame);
+                DestroyTask(taskId);
+            }
+            else
+            {
+                data[0] = STEP_LOAD;
+            }
+            break;
+    }
+}
+
+void StartIntroSlideshow(void)
+{
+    DebugPrintf("StartIntroSlideshow Reached");
+
+    if (FlagGet(FLAG_INTRO_MAP_PREVIEW_DONE))
+    {
+        SetMainCallback2(CB2_ReturnToField);
+        return;
+    }
+
+    SetVBlankCallback(NULL);
+    u8 taskId = CreateTask(Task_IntroSlideshow, 0);
+    DebugPrintf("Created Task ID: %u", taskId);
+    memset(gTasks[taskId].data, 0, sizeof(gTasks[taskId].data));
+    SetMainCallback2(CB2_IntroMapPreviewSequence);
 }
 
 #undef taskStep

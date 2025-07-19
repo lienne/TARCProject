@@ -38,6 +38,7 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift_menu.h"
+#include "map_preview_screen.h"
 
 /*
  * Main menu state machine
@@ -1807,7 +1808,8 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tLotadSpriteId);
         ResetAllPicSprites();
-        SetMainCallback2(CB2_NewGame);
+        // SetMainCallback2(CB2_NewGame);
+        StartIntroSlideshow();
         DestroyTask(taskId);
     }
 }
