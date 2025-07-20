@@ -355,6 +355,11 @@ generated: $(AUTO_GEN_TARGETS)
 %.aif: ;
 %.pory: ;
 
+# Create a no-op .pory for any map missing one:
+data/maps/%/scripts.pory:
+	@mkdir -p $(dir $@)
+	@echo "// no events yet" > $@
+
 %.1bpp:   %.png  ; $(GFX) $< $@
 %.4bpp:   %.png  ; $(GFX) $< $@
 %.8bpp:   %.png  ; $(GFX) $< $@
