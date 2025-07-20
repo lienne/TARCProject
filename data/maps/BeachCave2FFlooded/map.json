@@ -1,7 +1,7 @@
 {
-  "id": "MAP_OAKS_LIBRARY_CELLAR",
-  "name": "OaksLibraryCellar",
-  "layout": "LAYOUT_OAKS_LIBRARY_CELLAR",
+  "id": "MAP_BEACH_CAVE2FFLOODED",
+  "name": "BeachCave2FFlooded",
+  "layout": "LAYOUT_BEACH_CAVE2FFLOODED",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
@@ -16,25 +16,39 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 2,
-      "y": 9,
-      "elevation": 0,
-      "dest_map": "MAP_OAKS_LIBRARY",
-      "dest_warp_id": "2"
-    },
-    {
       "x": 3,
-      "y": 9,
+      "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_OAKS_LIBRARY",
+      "dest_map": "MAP_OAKS_LIBRARY_CELLAR",
       "dest_warp_id": "2"
     },
     {
-      "x": 1,
-      "y": 3,
+      "x": 14,
+      "y": 25,
       "elevation": 0,
       "dest_map": "MAP_BEACH_CAVE2FFLOODED",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 15,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_BEACH_CAVE2FFLOODED",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 52,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MELODY_FOREST",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 53,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MELODY_FOREST",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],

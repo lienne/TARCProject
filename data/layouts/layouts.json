@@ -4600,6 +4600,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/BeachCave2F/border.bin",
       "blockdata_filepath": "data/layouts/BeachCave2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_BEACH_CAVE2FFLOODED",
+      "name": "BeachCave2FFlooded_Layout",
+      "width": 60,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BeachCave2FFlooded/border.bin",
+      "blockdata_filepath": "data/layouts/BeachCave2FFlooded/map.bin"
     }
   ]
 }
