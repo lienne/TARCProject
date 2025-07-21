@@ -2738,7 +2738,7 @@ static void Task_PlaceMon(u8 taskId)
     {
     case 0:
         
-    if (CountPartyAliveNonEggMonsExcept(sCursorPosition) <= 2)
+    if (sCursorArea == CURSOR_AREA_IN_BOX || CountPartyAliveNonEggMonsExcept(sCursorPosition) <= 2)
     {
         InitMonPlaceChange(CHANGE_PLACE);
         sStorage->state++;
@@ -6835,7 +6835,7 @@ static bool8 CanPlaceMon(void)
 {
     if (sIsMonBeingMoved)
     {
-        if (sCursorArea == CURSOR_AREA_IN_PARTY && GetMonData(&gPlayerParty[sCursorPosition], MON_DATA_SPECIES) == SPECIES_NONE && CountPartyAliveNonEggMonsExcept(sCursorPosition) <= 1)
+        if (sCursorArea == CURSOR_AREA_IN_PARTY && GetMonData(&gPlayerParty[sCursorPosition], MON_DATA_SPECIES) == SPECIES_NONE)
         {
             return TRUE;
         }
