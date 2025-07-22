@@ -855,7 +855,6 @@ static void Task_IntroSlideshow(u8 taskId)
         case STEP_LOAD:
             MapPreview_InitBgs();
             ResetTempTileDataBuffers();
-
             LoadPalette(image->palptr, BG_PLTT_ID(0), PLTT_SIZE);
             DecompressAndCopyTileDataToVram(0, image->tilesptr, 0, 0, 0);
 
@@ -890,7 +889,7 @@ static void Task_IntroSlideshow(u8 taskId)
         case STEP_WAIT_INPUT:
             if (JOY_NEW(A_BUTTON))
             {
-                // previously working code:
+                // previously working code, still with yellow bug:
                 // BeginNormalPaletteFade(PALETTES_ALL, 5, 0x10, 16, RGB_WHITE);
                 // CopyBgTilemapBufferToVram(0);
                 // data[0] = STEP_FADE_OUT;
@@ -898,6 +897,7 @@ static void Task_IntroSlideshow(u8 taskId)
                 // Set up manual fade-out
                 ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
                 gPlttBufferUnfaded[0] = RGB_WHITE;
+                gPlttBufferFaded[0] = RGB_WHITE;
                 // copy just one 16-bit entry (palette idx 0) into palette RAM
                 DmaCopy16(3, &gPlttBufferUnfaded[0], (void*)(PLTT), sizeof(u16));
                 LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
@@ -910,7 +910,6 @@ static void Task_IntroSlideshow(u8 taskId)
                 SetGpuReg(REG_OFFSET_BLDCNT,
                     BLDCNT_TGT1_BG0|BLDCNT_TGT2_BD|BLDCNT_EFFECT_BLEND
                 );
-                // SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_TGT2_BD | BLDCNT_EFFECT_BLEND);
                 data[0] = STEP_FADE_OUT;
             }
             break;
@@ -973,7 +972,8 @@ void StartIntroSlideshow(void)
 
     if (FlagGet(FLAG_INTRO_MAP_PREVIEW_DONE))
     {
-        SetMainCallback2(CB2_ReturnToField);
+        // SetMainCallback2(CB2_ReturnToField);
+        SetMainCallback2(CB2_NewGame);
         return;
     }
 
