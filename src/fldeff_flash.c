@@ -398,8 +398,12 @@ static void Task_MapPreviewScreen_0(u8 taskId)
     case 1:
         if (!MapPreview_IsGfxLoadFinished())
         {
-            data[4] = MapPreview_CreateMapNameWindow(data[3]);
-            CopyWindowToVram(data[4], COPYWIN_FULL);
+            #if !DISABLE_MAP_NAME_WINDOW
+                data[4] = MapPreview_CreateMapNameWindow(data[3]);
+                CopyWindowToVram(data[4], COPYWIN_FULL);
+            #else
+                data[4] = -1;
+            #endif
             data[0]++;
         }
         break;
@@ -440,7 +444,9 @@ static void Task_MapPreviewScreen_0(u8 taskId)
             {
                 data[i] = 0;
             }
-            MapPreview_Unload(data[4]);
+            #if !DISABLE_MAP_NAME_WINDOW
+                MapPreview_Unload(data[4]);
+            #endif
             if (MapHasPreviewScreen_HandleQLState2(gMapHeader.regionMapSectionId, MPS_TYPE_BASIC) == TRUE)
             {
                 SetMainCallback2(gMain.savedCallback);
