@@ -25,15 +25,15 @@
       "x": 2,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_BEACH_CAVE2FFLOODED",
-      "dest_warp_id": "3"
+      "dest_map": "MAP_BEACH_CAVE3FFLOODED",
+      "dest_warp_id": "1"
     },
     {
       "x": 3,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_BEACH_CAVE2FFLOODED",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_BEACH_CAVE3FFLOODED",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [],
