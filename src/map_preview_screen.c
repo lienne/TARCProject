@@ -94,31 +94,57 @@ static const u8 sHarmony1MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/h
 static const u8 sHarmony1MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/harmony/tiles1.4bpp.lz");
 static const u8 sHarmony1MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/harmony/tilemap1.bin.lz");
 
+static const u8 sMeloettaIntro1MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles1.gbapal");
+static const u8 sMeloettaIntro1MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles1.4bpp.lz");
+static const u8 sMeloettaIntro1MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles1.bin.lz");
+
+static const u8 sMeloettaIntro2MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles2.gbapal");
+static const u8 sMeloettaIntro2MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles2.4bpp.lz");
+static const u8 sMeloettaIntro2MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles2.bin.lz");
+
+static const u8 sMeloettaIntro3MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles3.gbapal");
+static const u8 sMeloettaIntro3MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles3.4bpp.lz");
+static const u8 sMeloettaIntro3MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles3.bin.lz");
+
+static const u8 sMeloettaIntro4MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles4.gbapal");
+static const u8 sMeloettaIntro4MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles4.4bpp.lz");
+static const u8 sMeloettaIntro4MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles4.bin.lz");
+
+static const u8 sMeloettaIntro5MapPreviewPalette[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles5.gbapal");
+static const u8 sMeloettaIntro5MapPreviewTiles[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles5.4bpp.lz");
+static const u8 sMeloettaIntro5MapPreviewTilemap[] = INCBIN_U8("graphics/map_preview/meloetta_intro/tiles5.bin.lz");
+
 // Intro slideshow images
 static const struct MapPreviewScreen sIntroSlides[INTRO_SLIDE_COUNT] = {
-    [INTRO_HARMONY_1] = {
+    [INTRO_MELOETTA_1] = {
         .mapsec = MAPSEC_ABANDONED_SHIP,
         .type = MPS_TYPE_FADE_IN,
         .flagId = MPS_FLAG_NULL,
-        .image = IMG_HARMONY_1
+        .image = IMG_MELOETTA_INTRO_1
     },
-    [INTRO_VIRIDIAN_FOREST] = {
-        .mapsec = MAPSEC_VIRIDIAN_FOREST,
+    [INTRO_MELOETTA_2] = {
+        .mapsec = MAPSEC_ABANDONED_SHIP,
         .type = MPS_TYPE_FADE_IN,
         .flagId = MPS_FLAG_NULL,
-        .image = IMG_VIRIDIAN_FOREST
+        .image = IMG_MELOETTA_INTRO_2
     },
-    [INTRO_MT_MOON] = {
-        .mapsec = MAPSEC_MT_MOON,
-        .type = MPS_TYPE_CAVE,
+    [INTRO_MELOETTA_3] = {
+        .mapsec = MAPSEC_ABANDONED_SHIP,
+        .type = MPS_TYPE_FADE_IN,
         .flagId = MPS_FLAG_NULL,
-        .image = IMG_MT_MOON
+        .image = IMG_MELOETTA_INTRO_3
     },
-    [INTRO_DIGLETTS_CAVE] = {
-        .mapsec = MAPSEC_DIGLETTS_CAVE,
-        .type = MPS_TYPE_CAVE,
+    [INTRO_MELOETTA_4] = {
+        .mapsec = MAPSEC_ABANDONED_SHIP,
+        .type = MPS_TYPE_FADE_IN,
         .flagId = MPS_FLAG_NULL,
-        .image = IMG_DIGLETTS_CAVE
+        .image = IMG_MELOETTA_INTRO_4
+    },
+    [INTRO_MELOETTA_5] = {
+        .mapsec = MAPSEC_ABANDONED_SHIP,
+        .type = MPS_TYPE_FADE_IN,
+        .flagId = MPS_FLAG_NULL,
+        .image = IMG_MELOETTA_INTRO_5
     },
 };
 
@@ -412,8 +438,37 @@ static const struct ImageData sMapPreviewImageData[IMG_COUNT] = {
         .tilesptr = sHarmony1MapPreviewTiles,
         .tilemapptr = sHarmony1MapPreviewTilemap,
         .palptr = sHarmony1MapPreviewPalette
+    },
+    [IMG_MELOETTA_INTRO_1] = {
+        .tilesptr = sMeloettaIntro1MapPreviewTiles,
+        .tilemapptr = sMeloettaIntro1MapPreviewTilemap,
+        .palptr = sMeloettaIntro1MapPreviewPalette
+    },
+    [IMG_MELOETTA_INTRO_2] = {
+        .tilesptr = sMeloettaIntro2MapPreviewTiles,
+        .tilemapptr = sMeloettaIntro2MapPreviewTilemap,
+        .palptr = sMeloettaIntro2MapPreviewPalette
+    },
+    [IMG_MELOETTA_INTRO_3] = {
+        .tilesptr = sMeloettaIntro3MapPreviewTiles,
+        .tilemapptr = sMeloettaIntro3MapPreviewTilemap,
+        .palptr = sMeloettaIntro3MapPreviewPalette
+    },
+    [IMG_MELOETTA_INTRO_4] = {
+        .tilesptr = sMeloettaIntro4MapPreviewTiles,
+        .tilemapptr = sMeloettaIntro4MapPreviewTilemap,
+        .palptr = sMeloettaIntro4MapPreviewPalette
+    },
+    [IMG_MELOETTA_INTRO_5] = {
+        .tilesptr = sMeloettaIntro5MapPreviewTiles,
+        .tilemapptr = sMeloettaIntro5MapPreviewTilemap,
+        .palptr = sMeloettaIntro5MapPreviewPalette
     }
 };
+
+// static const u8 sMeloettaIntro1MapPreviewPalette[]
+// static const u8 sMeloettaIntro1MapPreviewTiles[]
+// static const u8 sMeloettaIntro1MapPreviewTilemap[]
 
 static const struct WindowTemplate sMapNameWindow = {
     .bg = 0,
@@ -890,64 +945,67 @@ static void Task_IntroSlideshow(u8 taskId)
             if (JOY_NEW(A_BUTTON))
             {
                 // previously working code, still with yellow bug:
-                // BeginNormalPaletteFade(PALETTES_ALL, 5, 0x10, 16, RGB_WHITE);
-                // CopyBgTilemapBufferToVram(0);
-                // data[0] = STEP_FADE_OUT;
-
-                // Set up manual fade-out
-                ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
+                BeginNormalPaletteFade(PALETTES_ALL, 5, 0x10, 16, RGB_WHITE);
                 gPlttBufferUnfaded[0] = RGB_WHITE;
                 gPlttBufferFaded[0] = RGB_WHITE;
-                // copy just one 16-bit entry (palette idx 0) into palette RAM
-                DmaCopy16(3, &gPlttBufferUnfaded[0], (void*)(PLTT), sizeof(u16));
-                LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
-                
-                data[2] = 0; // 0 = direction alternator
-                data[3] = 16; // alpha of fading out (image)
-                data[4] = 0; // alpha of fading in (white)
-                
-                LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
-                SetGpuReg(REG_OFFSET_BLDCNT,
-                    BLDCNT_TGT1_BG0|BLDCNT_TGT2_BD|BLDCNT_EFFECT_BLEND
-                );
+                CopyBgTilemapBufferToVram(0);
                 data[0] = STEP_FADE_OUT;
+
+                // Set up manual fade-out
+                // ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
+                // gPlttBufferUnfaded[0] = RGB_WHITE;
+                // gPlttBufferFaded[0] = RGB_WHITE;
+                // // copy just one 16-bit entry (palette idx 0) into palette RAM
+                // DmaCopy16(3, &gPlttBufferUnfaded[0], (void*)(PLTT), sizeof(u16));
+                // LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
+                
+                // data[2] = 0; // 0 = direction alternator
+                // data[3] = 16; // alpha of fading out (image)
+                // data[4] = 0; // alpha of fading in (white)
+                
+                // LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
+                // SetGpuReg(REG_OFFSET_BLDCNT,
+                //     BLDCNT_TGT1_BG0|BLDCNT_TGT2_BD|BLDCNT_EFFECT_BLEND
+                // );
+                // data[0] = STEP_FADE_OUT;
             }
             break;
 
         case STEP_FADE_OUT:
-            // if (!gPaletteFade.active)
-            // {
-            //     SetVBlankCallback(NULL);
-            //     FadeScreen(FADE_FROM_WHITE, 0);
-            //     FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
-            //     CopyBgTilemapBufferToVram(0);
-            //     data[0] = STEP_NEXT_OR_DONE;
-            // }
-            // break;
-
-            switch (data[2])
+            if (!gPaletteFade.active)
             {
-                case 0:  // fade in white
-                    if (data[4] < 16)
-                        data[4]++;
-                    break;
-                case 1:  // fade out image
-                    if (data[3] > 0)
-                        data[3]--;
-                    break;
-            }
-
-            SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(data[3], data[4]));
-            data[2] = (data[2] + 1) % 3;  // alternate each frame
-
-            if (data[3] == 0 && data[4] == 16)
-            {
+                SetVBlankCallback(NULL);
+                FadeScreen(FADE_FROM_WHITE, 0);
                 FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
                 CopyBgTilemapBufferToVram(0);
-                SetGpuReg(REG_OFFSET_BLDCNT, 0);  // clear blending
                 data[0] = STEP_NEXT_OR_DONE;
             }
             break;
+
+            // manual fade:
+            // switch (data[2])
+            // {
+            //     case 0:  // fade in white
+            //         if (data[4] < 16)
+            //             data[4]++;
+            //         break;
+            //     case 1:  // fade out image
+            //         if (data[3] > 0)
+            //             data[3]--;
+            //         break;
+            // }
+
+            // SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(data[3], data[4]));
+            // data[2] = (data[2] + 1) % 3;  // alternate each frame
+
+            // if (data[3] == 0 && data[4] == 16)
+            // {
+            //     FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
+            //     CopyBgTilemapBufferToVram(0);
+            //     SetGpuReg(REG_OFFSET_BLDCNT, 0);  // clear blending
+            //     data[0] = STEP_NEXT_OR_DONE;
+            // }
+            // break;
 
         case STEP_NEXT_OR_DONE:
             data[1]++;
