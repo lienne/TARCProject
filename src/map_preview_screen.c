@@ -539,8 +539,12 @@ bool32 MapHasPreviewScreen_HandleQLState2(u8 mapsec, u8 type)
 
 void MapPreview_InitBgs(void)
 {
+    ResetBgs();
     InitBgsFromTemplates(0, sMapPreviewBgTemplate, NELEMS(sMapPreviewBgTemplate));
     ShowBg(0);
+    // HideBg(1);
+    // HideBg(2);
+    // HideBg(3);
 }
 
 void MapPreview_LoadGfx(u8 mapsec)
@@ -911,6 +915,8 @@ static void Task_IntroSlideshow(u8 taskId)
             MapPreview_InitBgs();
             ResetTempTileDataBuffers();
             LoadPalette(image->palptr, BG_PLTT_ID(0), PLTT_SIZE);
+            gPlttBufferUnfaded[0] = RGB_WHITE;
+            gPlttBufferFaded[0] = RGB_WHITE;
             DecompressAndCopyTileDataToVram(0, image->tilesptr, 0, 0, 0);
 
             if (GetBgTilemapBuffer(0) == NULL)
@@ -944,68 +950,22 @@ static void Task_IntroSlideshow(u8 taskId)
         case STEP_WAIT_INPUT:
             if (JOY_NEW(A_BUTTON))
             {
-                // previously working code, still with yellow bug:
-                BeginNormalPaletteFade(PALETTES_ALL, 5, 0x10, 16, RGB_WHITE);
-                gPlttBufferUnfaded[0] = RGB_WHITE;
-                gPlttBufferFaded[0] = RGB_WHITE;
+                SetVBlankCallback(VblankCB_MapPreviewScript);
+                BeginNormalPaletteFade(PALETTES_ALL, 5, 0, 16, RGB_WHITE);
                 CopyBgTilemapBufferToVram(0);
                 data[0] = STEP_FADE_OUT;
-
-                // Set up manual fade-out
-                // ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
-                // gPlttBufferUnfaded[0] = RGB_WHITE;
-                // gPlttBufferFaded[0] = RGB_WHITE;
-                // // copy just one 16-bit entry (palette idx 0) into palette RAM
-                // DmaCopy16(3, &gPlttBufferUnfaded[0], (void*)(PLTT), sizeof(u16));
-                // LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
-                
-                // data[2] = 0; // 0 = direction alternator
-                // data[3] = 16; // alpha of fading out (image)
-                // data[4] = 0; // alpha of fading in (white)
-                
-                // LoadPalette(&((u16[]){RGB_WHITE}), BG_PLTT_ID(0), 1);
-                // SetGpuReg(REG_OFFSET_BLDCNT,
-                //     BLDCNT_TGT1_BG0|BLDCNT_TGT2_BD|BLDCNT_EFFECT_BLEND
-                // );
-                // data[0] = STEP_FADE_OUT;
             }
             break;
 
         case STEP_FADE_OUT:
-            if (!gPaletteFade.active)
-            {
+            if (!UpdatePaletteFade()) {
                 SetVBlankCallback(NULL);
                 FadeScreen(FADE_FROM_WHITE, 0);
-                FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
+                FillBgTilemapBufferRect_Palette0(0,0,0,0,32,32);
                 CopyBgTilemapBufferToVram(0);
                 data[0] = STEP_NEXT_OR_DONE;
             }
             break;
-
-            // manual fade:
-            // switch (data[2])
-            // {
-            //     case 0:  // fade in white
-            //         if (data[4] < 16)
-            //             data[4]++;
-            //         break;
-            //     case 1:  // fade out image
-            //         if (data[3] > 0)
-            //             data[3]--;
-            //         break;
-            // }
-
-            // SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(data[3], data[4]));
-            // data[2] = (data[2] + 1) % 3;  // alternate each frame
-
-            // if (data[3] == 0 && data[4] == 16)
-            // {
-            //     FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, 32, 32);
-            //     CopyBgTilemapBufferToVram(0);
-            //     SetGpuReg(REG_OFFSET_BLDCNT, 0);  // clear blending
-            //     data[0] = STEP_NEXT_OR_DONE;
-            // }
-            // break;
 
         case STEP_NEXT_OR_DONE:
             data[1]++;
@@ -1030,7 +990,6 @@ void StartIntroSlideshow(void)
 
     if (FlagGet(FLAG_INTRO_MAP_PREVIEW_DONE))
     {
-        // SetMainCallback2(CB2_ReturnToField);
         SetMainCallback2(CB2_NewGame);
         return;
     }
