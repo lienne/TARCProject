@@ -54,8 +54,8 @@
       "x": 4,
       "y": 30,
       "elevation": 0,
-      "dest_map": "MAP_BEACH_CAVE2FFLOODED",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_BEACH_CAVE",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [],

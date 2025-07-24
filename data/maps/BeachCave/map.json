@@ -35,6 +35,13 @@
       "elevation": 0,
       "dest_map": "MAP_BEACH_CAVE2F",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 31,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_BEACH_CAVE2FFLOODED",
+      "dest_warp_id": "5"
     }
   ],
   "coord_events": [],

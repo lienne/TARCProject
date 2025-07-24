@@ -2,7 +2,7 @@
   "id": "MAP_HARMONY_CAVE_EXT",
   "name": "HarmonyCaveExt",
   "layout": "LAYOUT_HARMONY_CAVE_EXT",
-  "music": "MUS_DEWFORD",
+  "music": "SE_M_SURF",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
