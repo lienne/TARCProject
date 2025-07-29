@@ -15,12 +15,12 @@
   "connections": [
     {
       "map": "MAP_HARMONY_VILLAGE",
-      "offset": 10,
+      "offset": 0,
       "direction": "up"
     },
     {
       "map": "MAP_MELODY_FOREST",
-      "offset": -57,
+      "offset": -56,
       "direction": "right"
     }
   ],

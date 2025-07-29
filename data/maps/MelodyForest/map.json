@@ -3,9 +3,9 @@
   "name": "MelodyForest",
   "layout": "LAYOUT_MELODY_FOREST",
   "music": "MUS_RG_MT_MOON",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_VIRIDIAN_FOREST",
   "requires_flash": false,
-  "weather": "WEATHER_FOG_HORIZONTAL",
+  "weather": "WEATHER_UNDERWATER",
   "map_type": "MAP_TYPE_NONE",
   "allow_cycling": false,
   "allow_escaping": false,
@@ -15,22 +15,22 @@
   "connections": [
     {
       "map": "MAP_HARMONY_SANDBAR",
-      "offset": 57,
+      "offset": 56,
       "direction": "left"
     }
   ],
   "object_events": [],
   "warp_events": [
     {
-      "x": 2,
-      "y": 8,
+      "x": 10,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_BEACH_CAVE3FFLOODED",
       "dest_warp_id": "1"
     },
     {
-      "x": 3,
-      "y": 8,
+      "x": 11,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_BEACH_CAVE3FFLOODED",
       "dest_warp_id": "1"

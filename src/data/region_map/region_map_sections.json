@@ -18,7 +18,7 @@
     },
     {
       "id": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "name": "RELIC FOREST",
       "x": 2,
       "y": 14,
       "width": 1,
@@ -1009,7 +1009,7 @@
     },
     {
       "id": "MAPSEC_VIRIDIAN_FOREST",
-      "name": "VIRIDIAN FOREST",
+      "name": "RELIC FOREST",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1017,7 +1017,7 @@
     },
     {
       "id": "MAPSEC_MT_MOON",
-      "name": "MT. MOON",
+      "name": "RELIC FOREST",
       "x": 0,
       "y": 0,
       "width": 1,

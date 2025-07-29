@@ -4447,7 +4447,7 @@
       "width": 40,
       "height": 70,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mauville",
+      "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/HarmonyVillage/border.bin",
       "blockdata_filepath": "data/layouts/HarmonyVillage/map.bin"
     },
@@ -4465,7 +4465,7 @@
       "id": "LAYOUT_HARMONY_SANDBAR",
       "name": "HarmonySandbar_Layout",
       "width": 50,
-      "height": 12,
+      "height": 18,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/HarmonySandbar/border.bin",
